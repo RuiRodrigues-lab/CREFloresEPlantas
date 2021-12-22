@@ -1,0 +1,95 @@
+﻿@model CREFloresEPlantas.Models.Produtos
+@{
+    ViewData["Title"] = "Detalhes";
+}
+<br />
+
+<h2 class="text-info">Detalhes do Produto</h2>
+
+<form asp-action="Details" method="post" enctype="multipart/form-data">
+    <div class="p-4 rounded border row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-8">
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Nome"></label>
+                </div>
+                <div class="col-8">
+                    <input type="hidden" asp-for="Id" />
+                    <input asp-for="Nome" readonly="readonly" class="form-control" />
+                </div>
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Preco"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Preco" readonly="readonly" class="form-control" />
+                </div>
+                <span asp-validation-for="Preco" class="text-danger"></span>
+            </div>
+            @*<div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Imagem"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Imagem"  class="form-control" type="file" />
+                </div>
+                <span asp-validation-for="Imagem" class="text-danger"></span>
+            </div>*@
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="CorProduto"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="CorProduto" readonly="readonly" class="form-control" />
+                </div>
+                <span asp-validation-for="CorProduto" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="TiposProdutosId"></label>
+                </div>
+                <div class="col-8">
+                    @*<select asp-for="TiposProdutosId" asp-items="ViewBag.tipoProdutoId" class="form-control"></select>*@
+                    <input asp-for="TiposProdutosId" class="form-control" />
+                </div>
+                <span asp-validation-for="TiposProdutosId" readonly="readonly" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="SpecialTagId"></label>
+                </div>
+                <div class="col-8">
+                    @*<select asp-for="SpecialTagId" asp-items="ViewBag.TagId" class="form-control"></select>*@
+                    <input asp-for="SpecialTagId" class="form-control" />
+                </div>
+                <span asp-validation-for="SpecialTagId" class="text-danger"></span>
+            </div>
+            <div class="form-group row">
+                <div class="col-4">
+                    <label asp-for="Disponivel"></label>
+                </div>
+                <div class="col-8">
+                    <input asp-for="Disponivel" class="" type="checkbox" />
+                </div>
+                <span asp-validation-for="Disponivel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a type="button" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Editar</a>
+                <a asp-action="Index" class="btn btn-success">Voltar a Lista</a>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-3">
+            <img src="~/@Model.Imagem" width="100%" style="border-radius: 5px;border: 1px solid #efefef" />
+        </div>
+
+
+    </div>
+</form>
+
+@section Scripts{
+    @{await Html.RenderPartialAsync(partialViewName: "_ValidationScriptsPartial");}
+}

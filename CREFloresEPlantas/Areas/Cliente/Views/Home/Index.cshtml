@@ -1,0 +1,34 @@
+﻿@using CREFloresEPlantas.Models;
+@model List<Produtos>
+@{ 
+    ViewData["Title"] = "Home";
+}
+<br /><br />
+<div class="row">
+    @foreach (var produto in Model)
+     {
+        <div class="col-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>
+                        <label style="font-size: 23px;color: steelblue">@produto.Nome</label>
+                    </h4>
+                </div>
+                <img src="~/@produto.Imagem" alt="Card Image" class="card-img-top" style="height: 300px;"/>
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <label style="font-size: 20px; color: #a51313"><b>Preço : @produto.Preco €</b></label>
+                        </div>
+                        <a asp-action="Detail" asp-controller="Home" asp-route-id="@produto.Id" class="btn pull-right btn-outline-info">Detalhes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+     }
+</div>
+
+
+
+
+

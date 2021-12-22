@@ -1,0 +1,48 @@
+﻿@using CREFloresEPlantas.Models;
+@model IEnumerable<TiposProdutos>
+@{
+    ViewData["Title"] = "Index";
+}
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Lista de tipos de produtos</h2>
+    </div>
+    <div class="col-6 text-right">
+        <a asp-action="Create" class="btn btn-info">&nbsp;<i class="fas fa-plus"></i>  Novo tipo de produto </a>
+    </div>
+</div>
+<br />
+<div>
+    <table class="table table-striped">
+        <tr class="table-info">
+            <th>
+                @Html.DisplayNameFor(expression: c => c.TipoProduto)
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TipoProduto</td>
+                <td>
+                    <partial name="_ButtonPartial" model="@item.Id" />
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+@section scripts{
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var save='@TempData["save"]'
+            if (save!='') {
+                alertify.success(save);
+            }
+        })
+    </script>
+}
